@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import filterShops from '../../utils/filterShops';
+import { filterShops } from '../../utils/arrayHelpers';
 
 const FilterForm = ({ list, onCheck }) => {
   let shops = [];
@@ -30,7 +30,6 @@ const FilterForm = ({ list, onCheck }) => {
   };
 
   useEffect(() => {
-    // console.log(checkedShops);
     onCheck(checkedShops);
   }, [checkedShops]);
 

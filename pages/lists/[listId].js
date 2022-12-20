@@ -17,7 +17,7 @@ const ShoppingListDetailPage = ({ products }) => {
     setIsShowForm(!isShowForm);
   };
 
-  const addItemHandler = async (newItem) => {
+  const addItemHandler = (newItem) => {
     axios.post(`http://localhost:3000/api/lists/${listId}/items/`, newItem);
     console.log('posted');
     setProductList((prevValue) => [...prevValue, newItem]);

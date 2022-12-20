@@ -1,5 +1,5 @@
-import ShoppingList from '../../../../models/shoppingListModel.js';
-import { connectToDatabase } from '../../../../utils/db.js';
+import ShoppingList from '../../../../../models/shoppingListModel.js';
+import { connectToDatabase } from '../../../../../utils/db.js';
 import { v4 as uuidv4 } from 'uuid';
 
 export default async function handler(req, res) {
@@ -31,8 +31,5 @@ export default async function handler(req, res) {
       msg: 'successfully created item',
       products: listWithCreatedItem,
     });
-  }
-
-  if (req.method === 'DELETE') {
   }
 }

@@ -3,7 +3,7 @@
 // nicht mehr hinzugefügt!
 
 const filterShops = (shoppinglist, shoplist) => {
-  shoppinglist.products.forEach((product) => {
+  shoppinglist.forEach((product) => {
     if (!shoplist.includes(product.shop)) {
       shoplist.push(product.shop);
     }

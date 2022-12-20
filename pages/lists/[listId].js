@@ -29,6 +29,7 @@ const ShoppingListDetailPage = ({ products }) => {
       return product.id != id;
     });
     setProductList([...productListWithoutDeletedItem]);
+    axios.delete(`http://localhost:3000/api/lists/${listId}/items/${id}`);
   };
 
   const onCheckShopFilterHandler = (filteredList) => {

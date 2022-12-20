@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import filterShops from '../../utils/filterShops';
 
 const FilterForm = ({ list, onCheck }) => {
@@ -6,38 +6,45 @@ const FilterForm = ({ list, onCheck }) => {
 
   // filter Shops from the given List and push them to the empty shops Array
   filterShops(list, shops);
-
-  const [filteredList, setFilteredList] = useState(list.products);
+  console.log(shops);
+  const [filteredList, setFilteredList] = useState(list);
   const [checkedShops, setCheckedShops] = useState([]);
+
+  function filterProducts(shopArray, products) {
+    return products.filter((product) => {
+      return shopArray.includes(product.shop);
+    });
+  }
 
   const onCheckHandler = (e) => {
     const shopName = e.target.name;
     const isChecked = e.target.checked;
-    console.log(shopName, isChecked);
-    // setCheckedShops([...checkedShops, shopName]);
-    // console.log(checkedShops);
-    // // onCheck(filteredList);
+
+    if (isChecked) {
+      setCheckedShops([...checkedShops, shopName]);
+      console.log(checkedShops);
+    } else {
+      setCheckedShops(checkedShops.filter((name) => name !== shopName));
+      console.log(checkedShops);
+    }
   };
+
+  useEffect(() => {
+    // console.log(checkedShops);
+    onCheck(checkedShops);
+  }, [checkedShops]);
 
   return (
     <form action="/action_page.php">
       <label htmlFor="shops">Nach Shop filtern: </label>
-      {/* <select id="cars" name="cars">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="fiat">Fiat</option>
-        <option value="audi">Audi</option>
-      </select> */}
-
-      <label htmlFor="aldi" onChange={onCheckHandler}>
-        <input type="checkbox" name="Aldi" id="aldi" />
-        Aldi
-      </label>
-
-      <label htmlFor="aldi" onChange={onCheckHandler}>
-        <input type="checkbox" name="Penny" id="penny" />
-        Penny
-      </label>
+      {shops.map((shop) => {
+        return (
+          <label key={shop} htmlFor={shop} onChange={onCheckHandler}>
+            <input type="checkbox" name={shop} id={shop} />
+            {shop}
+          </label>
+        );
+      })}
     </form>
   );
 };

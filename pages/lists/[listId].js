@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import AddItemForm from '../../components/ShoppingList/AddItemForm';
 import FilterForm from '../../components/ShoppingList/FilterForm';
 import ShoppingList from '../../components/ShoppingList/ShoppingList';
+import { filterProducts, sortByShop } from '../../utils/arrayHelpers';
 
 const ShoppingListDetailPage = ({ products }) => {
   const router = useRouter();
@@ -11,16 +12,7 @@ const ShoppingListDetailPage = ({ products }) => {
   const [isShowForm, setIsShowForm] = useState(false);
   const [productList, setProductList] = useState(products);
   const [filters, setFilters] = useState([]);
-  const [filteredList, setFilteredList] = useState();
-
-  // Bekommt ein Array aus Shopnamen und ein Array aus Produkten übergeben,
-  // überprüft ob das Produkt mit einem Shop aus dem shopArray übereinstimmt,
-  // wenn ja returned sie das Produkt
-  function filterProducts(shopArray, products) {
-    return products.filter((product) => {
-      return shopArray.includes(product.shop);
-    });
-  }
+  const [filteredList, setFilteredList] = useState([]);
 
   const showFormToggle = () => {
     setIsShowForm(!isShowForm);
@@ -45,9 +37,11 @@ const ShoppingListDetailPage = ({ products }) => {
     setFilters(shopFilters);
     console.log(shopFilters);
     const filteredProducts = filterProducts(shopFilters, productList);
+    const sortedFilteredProducts = sortByShop(filteredProducts);
+    console.log('sorted filtered products:', sortedFilteredProducts);
     console.log('original PRODUCTS:', productList);
     console.log('FILTERED PRODUCTS:', filteredProducts);
-    setFilteredList([...filteredProducts]);
+    setFilteredList([...sortedFilteredProducts]);
   };
 
   return (

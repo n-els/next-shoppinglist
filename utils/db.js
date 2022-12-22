@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 export const connectToDatabase = async () => {
   try {
+    console.log(process.env.API_ENDPOINT);
     const db = await mongoose.connect(process.env.DB_CONNECTION_STRING, {
       useNewUrlParser: true,
     });

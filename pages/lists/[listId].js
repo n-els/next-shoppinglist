@@ -1,10 +1,13 @@
-import { useRouter } from 'next/router';
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import axios from 'axios';
 import AddItemForm from '../../components/ShoppingList/AddItemForm';
 import FilterForm from '../../components/ShoppingList/FilterForm';
 import ShoppingList from '../../components/ShoppingList/ShoppingList';
 import { filterProducts, sortByShop } from '../../utils/arrayHelpers';
+
+console.log(process.env.DB_CONNECTION_STRING);
 
 const ShoppingListDetailPage = ({ products }) => {
   const router = useRouter();
@@ -35,30 +38,28 @@ const ShoppingListDetailPage = ({ products }) => {
 
   const onCheckShopFilterHandler = (shopFilters) => {
     setFilters(shopFilters);
-    console.log(shopFilters);
     const filteredProducts = filterProducts(shopFilters, productList);
     const sortedFilteredProducts = sortByShop(filteredProducts);
-    console.log('sorted filtered products:', sortedFilteredProducts);
-    console.log('original PRODUCTS:', productList);
-    console.log('FILTERED PRODUCTS:', filteredProducts);
     setFilteredList([...sortedFilteredProducts]);
   };
 
   return (
     <div className="">
-      <h1 className="mb-4 text-l font-bold">
+      <Head>
+        <title>Meine Liste</title>
+      </Head>
+      {/* <h1 className="mb-4 text-l font-bold">
         {productList.length > 0 ? (
           <span>{productList.length} Produkte in der Einkaufsliste</span>
         ) : (
           <span>Keine Produkte gefunden!</span>
         )}
-      </h1>
+      </h1> */}
 
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-4">
         <FilterForm list={productList} onCheck={onCheckShopFilterHandler} />
-
         <button
-          className="bg-green-600 font-bold text-3xl text-white px-2 rounded-3xl"
+          className="bg-green-600 font-bold text-3xl text-white px-2 rounded-full"
           onClick={showFormToggle}
         >
           {isShowForm ? <span>-</span> : <span>+</span>}

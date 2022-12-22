@@ -7,8 +7,6 @@ import FilterForm from '../../components/ShoppingList/FilterForm';
 import ShoppingList from '../../components/ShoppingList/ShoppingList';
 import { filterProducts, sortByShop } from '../../utils/arrayHelpers';
 
-console.log(process.env.NEXT_PUBLIC_API_ENDPOINT);
-
 const ShoppingListDetailPage = ({ products }) => {
   const router = useRouter();
   const { listId } = router.query;
@@ -22,10 +20,7 @@ const ShoppingListDetailPage = ({ products }) => {
   };
 
   const addItemHandler = (newItem) => {
-    axios.post(
-      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/lists/${listId}/items/`,
-      newItem
-    );
+    axios.post(`/api/lists/${listId}/items/`, newItem);
     console.log('posted');
     setProductList((prevValue) => [...prevValue, newItem]);
   };
@@ -36,9 +31,7 @@ const ShoppingListDetailPage = ({ products }) => {
       return product.id != id;
     });
     setProductList([...productListWithoutDeletedItem]);
-    axios.delete(
-      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/lists/${listId}/items/${id}`
-    );
+    axios.delete(`/api/lists/${listId}/items/${id}`);
   };
 
   const onCheckShopFilterHandler = (shopFilters) => {
@@ -53,13 +46,6 @@ const ShoppingListDetailPage = ({ products }) => {
       <Head>
         <title>Meine Liste</title>
       </Head>
-      {/* <h1 className="mb-4 text-l font-bold">
-        {productList.length > 0 ? (
-          <span>{productList.length} Produkte in der Einkaufsliste</span>
-        ) : (
-          <span>Keine Produkte gefunden!</span>
-        )}
-      </h1> */}
 
       <div className="flex justify-between mt-4">
         <FilterForm list={productList} onCheck={onCheckShopFilterHandler} />
@@ -82,11 +68,28 @@ const ShoppingListDetailPage = ({ products }) => {
 
 export default ShoppingListDetailPage;
 
+// export const getServerSideProps = async (context) => {
+//   const { listId } = context.params;
+//   const url = `/api/lists/${listId}`;
+//   const res = await fetch(url);
+//   const data = await res.json();
+//   const { products } = data.list;
+//   return {
+//     props: { products },
+//   };
+// };
+
 export const getServerSideProps = async (context) => {
   const { listId } = context.params;
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/lists/${listId}`
-  );
+  let baseURL;
+
+  if (process.env.NODE_ENV === 'development') {
+    baseURL = 'http://localhost:3000';
+  } else {
+    baseURL = process.env.VERCEL_URL;
+  }
+  const url = `${baseURL}/api/lists/${listId}`;
+  const res = await fetch(url);
   const data = await res.json();
   const { products } = data.list;
   return {

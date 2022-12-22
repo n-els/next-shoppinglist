@@ -6,6 +6,8 @@ import AddItemForm from '../../components/ShoppingList/AddItemForm';
 import FilterForm from '../../components/ShoppingList/FilterForm';
 import ShoppingList from '../../components/ShoppingList/ShoppingList';
 import { filterProducts, sortByShop } from '../../utils/arrayHelpers';
+import ShoppingListModel from '../../models/shoppingListModel';
+import { connectToDatabase } from '../../utils/db';
 
 const ShoppingListDetailPage = ({ products }) => {
   const router = useRouter();
@@ -81,17 +83,10 @@ export default ShoppingListDetailPage;
 
 export const getServerSideProps = async (context) => {
   const { listId } = context.params;
-  let baseURL;
+  connectToDatabase();
+  const list = await ShoppingListModel.findById(listId);
+  const { products } = list;
 
-  if (process.env.NODE_ENV === 'development') {
-    baseURL = 'http://localhost:3000';
-  } else {
-    baseURL = process.env.VERCEL_URL;
-  }
-  const url = `${baseURL}/api/lists/${listId}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  const { products } = data.list;
   return {
     props: { products },
   };

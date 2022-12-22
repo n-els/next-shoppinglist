@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="flex items-center justify-between flex-wrap bg-green-600 p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <span className="font-semibold text-xl tracking-tight">
-          Einkaufsliste
+          Einkaufsliste <span className="text-xs">alpha</span>
         </span>
       </div>
       <div className="block lg:hidden">
@@ -41,7 +41,7 @@ const Navbar = () => {
             Start
           </NavbarLink>
           <NavbarLink
-            to={'/lists/6391cd264c9532e00244e415'}
+            to={'/lists/63a049517ba87644ea547db7'}
             clickHandler={toggleOpen}
           >
             Meine Liste

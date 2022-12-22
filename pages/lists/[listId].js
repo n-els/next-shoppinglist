@@ -7,7 +7,7 @@ import FilterForm from '../../components/ShoppingList/FilterForm';
 import ShoppingList from '../../components/ShoppingList/ShoppingList';
 import { filterProducts, sortByShop } from '../../utils/arrayHelpers';
 
-console.log(process.env.DB_CONNECTION_STRING);
+console.log(process.env.NEXT_PUBLIC_API_ENDPOINT);
 
 const ShoppingListDetailPage = ({ products }) => {
   const router = useRouter();
@@ -22,7 +22,10 @@ const ShoppingListDetailPage = ({ products }) => {
   };
 
   const addItemHandler = (newItem) => {
-    axios.post(`http://localhost:3000/api/lists/${listId}/items/`, newItem);
+    axios.post(
+      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/lists/${listId}/items/`,
+      newItem
+    );
     console.log('posted');
     setProductList((prevValue) => [...prevValue, newItem]);
   };
@@ -33,7 +36,9 @@ const ShoppingListDetailPage = ({ products }) => {
       return product.id != id;
     });
     setProductList([...productListWithoutDeletedItem]);
-    axios.delete(`http://localhost:3000/api/lists/${listId}/items/${id}`);
+    axios.delete(
+      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/lists/${listId}/items/${id}`
+    );
   };
 
   const onCheckShopFilterHandler = (shopFilters) => {
@@ -79,7 +84,9 @@ export default ShoppingListDetailPage;
 
 export const getServerSideProps = async (context) => {
   const { listId } = context.params;
-  const res = await fetch(`http://localhost:3000/api/lists/${listId}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/lists/${listId}`
+  );
   const data = await res.json();
   const { products } = data.list;
   return {

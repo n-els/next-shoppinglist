@@ -1,5 +1,4 @@
 import { connectToDatabase } from '../../../utils/db.js';
-// import User from '../../models/userModel.js';
 import ShoppingList from '../../../models/shoppingListModel.js';
 
 export default async function handler(req, res) {

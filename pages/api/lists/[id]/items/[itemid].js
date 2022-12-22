@@ -1,6 +1,5 @@
 import ShoppingList from '../../../../../models/shoppingListModel.js';
 import { connectToDatabase } from '../../../../../utils/db.js';
-import { v4 as uuidv4 } from 'uuid';
 
 export default async function handler(req, res) {
   const listID = req.query.id;

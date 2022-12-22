@@ -9,8 +9,9 @@ export default async function handler(req, res) {
     return;
   }
 
+  const db = await connectToDatabase();
+
   if (req.method === 'GET') {
-    const db = await connectToDatabase();
     const selectedList = await ShoppingList.findById(req.query.id);
     if (!selectedList) {
       res.status(404).json({

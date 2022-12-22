@@ -15,8 +15,13 @@ const ShoppingItem = ({ item, onCheck }) => {
           <p>{item.shop}</p>
         </div>
       </div>
-      <div className="">
-        <input type="checkbox" name="" id="" onChange={checkItemHandler} />
+      <div className="mr-4">
+        <input
+          type="checkbox"
+          name="done"
+          id="done"
+          onChange={checkItemHandler}
+        />
       </div>
     </li>
   );

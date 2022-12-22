@@ -34,13 +34,18 @@ const FilterForm = ({ list, onCheck }) => {
   }, [checkedShops]);
 
   return (
-    <form action="/action_page.php">
+    <form className="">
       <label htmlFor="shops">Nach Shop filtern: </label>
       {shops.map((shop) => {
         return (
-          <label key={shop} htmlFor={shop} onChange={onCheckHandler}>
+          <label
+            className="mr-2"
+            key={shop}
+            htmlFor={shop}
+            onChange={onCheckHandler}
+          >
             <input type="checkbox" name={shop} id={shop} />
-            {shop}
+            <span className="ml-1">{shop}</span>
           </label>
         );
       })}

@@ -2,15 +2,14 @@ import mongoose from 'mongoose';
 import ShoppingList from './shoppingListModel.js';
 
 const userSchema = mongoose.Schema({
-  username: {
+  email: {
     type: String,
-    required: [true, 'A User must have an username!'],
+    required: [true, 'A User must have an email!'],
     unique: true,
     minlength: 5,
-    maxlength: 30,
+    maxlength: 60,
   },
   password: String,
-  email: String,
   list: { type: mongoose.Schema.Types.ObjectId, ref: 'ShoppingList' },
 });
 

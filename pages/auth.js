@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterForm from '../components/RegisterForm';
+import AuthForm from '../components/AuthForm';
 import Head from 'next/head';
 
 const RegisterPage = () => {
@@ -8,7 +8,7 @@ const RegisterPage = () => {
       <Head>
         <title>Registrieren</title>
       </Head>
-      <RegisterForm />
+      <AuthForm />
     </div>
   );
 };

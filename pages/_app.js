@@ -2,15 +2,18 @@ import Layout from '../components/layout';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
-  // Verwenden Sie getLayout, um das Layout für die aktuelle Seite zu ermitteln
   const LayoutComponent = Component.getLayout
     ? Component.getLayout(pageProps.path)
     : Layout;
 
+  const bgColor = Component.getLayout ? 'bg-primary' : 'bg-secondary';
+
   return (
-    <LayoutComponent>
-      <Component {...pageProps} />
-    </LayoutComponent>
+    <div className={`${bgColor} min-h-screen`}>
+      <LayoutComponent>
+        <Component {...pageProps} />
+      </LayoutComponent>
+    </div>
   );
 }
 

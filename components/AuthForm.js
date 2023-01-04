@@ -27,7 +27,7 @@ const RegisterForm = () => {
     try {
       const res = await axios.post('/api/auth/signup', { ...formData });
       console.log(res);
-      router.replace('/lists');
+      router.replace(`/willkommen`);
     } catch (error) {
       setErrorMessage(error.response.data.message);
     }

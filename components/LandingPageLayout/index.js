@@ -1,11 +1,15 @@
 import React from 'react';
+import Footer from './Footer';
 import Header from './Header';
 
 const Layout = (props) => {
   return (
-    <div className="bg-primary md:w-5/6 md:flex md:flex-col mx-auto">
+    <div className="md:flex md:flex-col">
       <Header />
-      <main className="mt-8 md:w-4/5 mx-auto">{props.children}</main>
+      <main className="bg-white m-3 sm:m-2 py-8 md:p-16 shadow-sm rounded-md">
+        {props.children}
+      </main>
+      <Footer />
     </div>
   );
 };

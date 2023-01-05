@@ -8,6 +8,8 @@ import GitHubIcon from '../components/Icons/GitHubIcon';
 import PrimaryButton from '../components/UI/PrimaryButton';
 import Hero from '../components/LandingPageLayout/Hero';
 
+import Benefits from '../components/LandingPageLayout/Benefits';
+
 export default function HomePage() {
   return (
     <>
@@ -15,6 +17,7 @@ export default function HomePage() {
         <title>EinkaufsGenie</title>
       </Head>
       <Hero />
+      <Benefits />
     </>
   );
 }

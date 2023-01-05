@@ -1,16 +1,27 @@
 import { useSession } from 'next-auth/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { unstable_getServerSession } from 'next-auth/next';
 import { authOptions } from '../pages/api/auth/[...nextauth]';
 
 const UserProfilePage = () => {
   const session = useSession();
+  const [isMessageVisible, setIsMessageVisible] = useState(false);
 
   console.log(session);
 
   return (
     <div>
       <p>Du bist als {session.data.user.email} eingeloggt</p>
+      <button onClick={() => setIsMessageVisible(!isMessageVisible)}>
+        Toggle Message
+      </button>
+      <div
+        className={`${
+          isMessageVisible ? 'opacity-100' : 'opacity-0'
+        } duration-300 ease-in-out`}
+      >
+        Testnachricht
+      </div>
     </div>
   );
 };

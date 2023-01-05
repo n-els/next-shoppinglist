@@ -16,21 +16,16 @@ const MobileMenu = ({ links }) => {
       <ul
         className={`${
           isOpen ? 'block' : 'hidden'
-        } w-2/3 h-[90%] bg-primary absolute left-0 top-14 text-orange-100 font-semibold border-r border-green-900`}
+        } w-2/3  bg-primary absolute left-0 top-14 min-h-full text-orange-100 font-semibold border-r border-green-900`}
       >
         {links.map((link) => (
           <li
             key={link.name}
-            className="py-4 pl-6 text-sm border-b border-green-900"
+            className="py-6 pl-6 text-xl border-b border-green-900 "
           >
             <a href={link.href}>{link.name}</a>
           </li>
         ))}
-        <li>
-          <a href="http://github.com/n-els" target="_blank">
-            Github
-          </a>
-        </li>
       </ul>
     </div>
   );

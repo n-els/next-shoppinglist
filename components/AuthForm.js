@@ -33,7 +33,7 @@ const RegisterForm = () => {
       });
 
       if (!result.error) {
-        router.replace(`/profil`);
+        router.replace(`/lists`);
       } else {
         setErrorMessage(result.error);
       }

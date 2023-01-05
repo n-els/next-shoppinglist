@@ -1,5 +1,6 @@
 import Layout from '../components/layout';
 import '../styles/globals.css';
+import { SessionProvider } from 'next-auth/react';
 
 function MyApp({ Component, pageProps }) {
   const LayoutComponent = Component.getLayout
@@ -10,9 +11,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div className={`${bgColor} min-h-screen`}>
-      <LayoutComponent>
-        <Component {...pageProps} />
-      </LayoutComponent>
+      <SessionProvider session={pageProps.session}>
+        <LayoutComponent>
+          <Component {...pageProps} />
+        </LayoutComponent>
+      </SessionProvider>
     </div>
   );
 }

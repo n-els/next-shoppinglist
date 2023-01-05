@@ -5,7 +5,8 @@ import React from 'react';
 
 import User from '../../models/userModel';
 
-const List = () => {
+const List = ({ email, products }) => {
+  console.log(email, products);
   return (
     <div>
       <h1>Meine Liste</h1>
@@ -31,18 +32,16 @@ export async function getServerSideProps(context) {
     };
   }
 
-  if (session) {
-    connectToDatabase();
-    const user = await User.findOne({ email: session.user.email });
-    console.log(user);
-  }
+  connectToDatabase();
+  const user = await User.findOne({ email: session.user.email }).populate(
+    'list'
+  );
+  console.log(user);
 
   return {
     props: {
-      session: {
-        user: { email: session.user.email },
-        expires: session.expires,
-      },
+      email: session.user.email,
+      products: user.list.products,
     },
   };
 }

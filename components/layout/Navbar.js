@@ -34,21 +34,21 @@ const Navbar = () => {
       <div
         className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${
           isOpen ? 'block' : 'hidden'
-        }`}
+        } duration-300 ease-in-out`}
       >
         <div className="text-sm lg:flex-grow">
           <NavbarLink to={'/'} clickHandler={toggleOpen}>
             Start
           </NavbarLink>
-          <NavbarLink to={'/lists'} clickHandler={toggleOpen}>
+          <NavbarLink
+            to={'/lists/63a049517ba87644ea547db7'}
+            clickHandler={toggleOpen}
+          >
             Meine Liste
           </NavbarLink>
-          <NavbarLink to={'/profil'} clickHandler={toggleOpen}>
-            Mein Profil
-          </NavbarLink>
 
-          <NavbarLink to={'/auth'} clickHandler={toggleOpen}>
-            Anmelden
+          <NavbarLink to={'/register'} clickHandler={toggleOpen}>
+            Registrieren
           </NavbarLink>
         </div>
         <div>

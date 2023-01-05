@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -24,12 +25,28 @@ const RegisterForm = () => {
     e.preventDefault();
     setErrorMessage(null);
 
-    try {
-      const res = await axios.post('/api/auth/signup', { ...formData });
-      console.log(res);
-      router.replace(`/willkommen`);
-    } catch (error) {
-      setErrorMessage(error.response.data.message);
+    if (isLogin) {
+      const result = await signIn('credentials', {
+        redirect: false,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      console.log(result);
+
+      if (!result.error) {
+        router.replace(`/willkommen`);
+      } else {
+        setErrorMessage(result.error);
+      }
+    } else {
+      try {
+        const res = await axios.post('/api/auth/signup', { ...formData });
+        console.log(res);
+        router.replace(`/willkommen`);
+      } catch (error) {
+        setErrorMessage(error.response.data.message);
+      }
     }
   };
 

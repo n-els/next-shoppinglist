@@ -32,10 +32,8 @@ const RegisterForm = () => {
         password: formData.password,
       });
 
-      console.log(result);
-
       if (!result.error) {
-        router.replace(`/willkommen`);
+        router.replace(`/profil`);
       } else {
         setErrorMessage(result.error);
       }

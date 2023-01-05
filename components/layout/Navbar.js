@@ -40,15 +40,15 @@ const Navbar = () => {
           <NavbarLink to={'/'} clickHandler={toggleOpen}>
             Start
           </NavbarLink>
-          <NavbarLink
-            to={'/lists/63a049517ba87644ea547db7'}
-            clickHandler={toggleOpen}
-          >
+          <NavbarLink to={'/lists'} clickHandler={toggleOpen}>
             Meine Liste
           </NavbarLink>
+          <NavbarLink to={'/profil'} clickHandler={toggleOpen}>
+            Mein Profil
+          </NavbarLink>
 
-          <NavbarLink to={'/register'} clickHandler={toggleOpen}>
-            Registrieren
+          <NavbarLink to={'/auth'} clickHandler={toggleOpen}>
+            Anmelden
           </NavbarLink>
         </div>
         <div>

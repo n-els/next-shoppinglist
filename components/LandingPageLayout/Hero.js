@@ -34,7 +34,7 @@ const Hero = () => {
           günstig anbieten, deiner eigenen Einkaufsliste hinzufügen und los
           geht's mit dem Schnäppchenjagen in den Supermärkten!
         </p>
-        <PrimaryButton link={'/list'}>zur Einkaufsliste</PrimaryButton>
+        <PrimaryButton link={'/lists'}>zur Einkaufsliste</PrimaryButton>
       </div>
     </div>
   );

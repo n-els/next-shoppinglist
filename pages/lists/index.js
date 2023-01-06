@@ -10,7 +10,7 @@ import ShoppingList from '../../components/ShoppingList/ShoppingList';
 import { filterProducts, sortByShop } from '../../utils/arrayHelpers';
 import User from '../../models/userModel';
 
-const List = ({ email, products }) => {
+const List = ({ email, products, listId }) => {
   const [isShowForm, setIsShowForm] = useState(false);
   const [productList, setProductList] = useState(products);
   const [filters, setFilters] = useState([]);
@@ -89,11 +89,11 @@ export async function getServerSideProps(context) {
   const user = await User.findOne({ email: session.user.email }).populate(
     'list'
   );
-  console.log(user);
 
   return {
     props: {
       email: session.user.email,
+      listId: user.list._id.toString(),
       products: user.list.products,
     },
   };

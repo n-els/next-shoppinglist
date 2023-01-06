@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
     ? Component.getLayout(pageProps.path)
     : Layout;
 
-  const bgColor = Component.getLayout ? 'bg-gray-200' : 'bg-secondary';
+  const bgColor = Component.getLayout ? 'bg-gray-200' : 'bg-slate-200';
 
   return (
     <div className={`${bgColor} min-h-screen`}>

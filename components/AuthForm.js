@@ -7,6 +7,7 @@ const RegisterForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    confirmpassword: '',
   });
 
   const [isLogin, setIsLogin] = useState(false);
@@ -20,6 +21,8 @@ const RegisterForm = () => {
       [name]: value,
     }));
   };
+
+  console.log(formData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +41,11 @@ const RegisterForm = () => {
         setErrorMessage(result.error);
       }
     } else {
+      if (formData.password !== formData.confirmpassword) {
+        setErrorMessage('Die Passwörter stimmen nicht überein.');
+        return;
+      }
+
       try {
         const res = await axios.post('/api/auth/signup', { ...formData });
         console.log(res);
@@ -54,39 +62,55 @@ const RegisterForm = () => {
 
   return (
     <>
-      <form action="" className="flex flex-col m-4" onSubmit={handleSubmit}>
+      <form action="" className="flex flex-col mt-10" onSubmit={handleSubmit}>
         {errorMessage ? (
           <p className="text-red-500 font-bold mb-2">{errorMessage}</p>
         ) : null}
         <input
           type="email"
           name="email"
-          placeholder="eMail-Adresse.."
-          className="mb-4 p-2"
+          placeholder="eMail-Adresse eingeben"
+          className="mb-5 py-2 px-4 rounded-md outline-none shadow-xl"
+          title="Die eMail-Adresse muss im gültigen Format sein."
           required
           onChange={handleChange}
         />
         <input
           type="password"
           name="password"
-          placeholder="Passwort.."
-          className="mb-4 p-2"
+          placeholder="Passwort eingeben"
+          className="mb-5 py-2 px-4 rounded-md outline-none shadow-xl"
           minLength="8"
+          title="Das Passwort muss mindestens 8 Zeichen lang sein."
           required
           onChange={handleChange}
         />
+        {isLogin ? null : (
+          <input
+            type="password"
+            name="confirmpassword"
+            placeholder="Passwort bestätigen"
+            className="mb-6 py-2 px-4 rounded-md outline-none shadow-xl"
+            minLength="8"
+            title="Das Passwort muss mindestens 8 Zeichen lang sein und mit dem ersten Passwort übereinstimmen."
+            required
+            onChange={handleChange}
+          />
+        )}
         <input
           type="submit"
-          className="mb-4 bg-slate-600 p-2 text-white"
-          value={isLogin ? 'Login' : 'Registrieren'}
+          className=" bg-primary p-2 font-medium text-white rounded-md md:hover:bg-primarydark cursor-pointer transition-all duration-500"
+          value={isLogin ? 'Einloggen' : 'Benutzerkonto anlegen'}
         />
       </form>
-      <button
-        className="mb-4 bg-green-600 p-2 text-white"
+      <p
+        className="mt-2 text-gray-600 text-sm text-center sm:hover:text-primary cursor-alias"
         onClick={switchModeHandler}
       >
-        {isLogin ? 'Benutzerkonto anlegen' : 'Bereits registriert?'}
-      </button>
+        {isLogin
+          ? 'Ich möchte ein neues Benutzerkonto anlegen'
+          : 'Ich besitze bereits ein Benutzerkonto'}
+      </p>
     </>
   );
 };

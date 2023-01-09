@@ -9,6 +9,8 @@ import FilterForm from '../../components/ShoppingList/FilterForm';
 import ShoppingList from '../../components/ShoppingList/ShoppingList';
 import { filterProducts, sortByShop } from '../../utils/arrayHelpers';
 import User from '../../models/userModel';
+import { BsPlusLg, BsMinu } from 'react-icons/bs';
+import { BiMinus } from 'react-icons/bi';
 
 const List = ({ email, products, listId }) => {
   const [isShowForm, setIsShowForm] = useState(false);
@@ -51,10 +53,16 @@ const List = ({ email, products, listId }) => {
       <div className="flex justify-between mt-4">
         <FilterForm list={productList} onCheck={onCheckShopFilterHandler} />
         <button
-          className="bg-green-600 font-bold text-3xl text-white px-2 rounded-full"
+          className="bg-primary font-bold text-white p-3 rounded-full"
           onClick={showFormToggle}
         >
-          {isShowForm ? <span>-</span> : <span>+</span>}
+          {isShowForm ? (
+            <span>
+              <BiMinus size="0.75rem" />
+            </span>
+          ) : (
+            <BsPlusLg size="0.75rem" />
+          )}
         </button>
       </div>
       {isShowForm && <AddItemForm onAddItem={addItemHandler} />}

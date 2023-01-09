@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { AiFillHome, AiFillMail } from 'react-icons/ai';
 import NavbarLink from './NavbarLink';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';

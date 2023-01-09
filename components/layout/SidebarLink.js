@@ -2,6 +2,7 @@ import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { AiFillHome } from 'react-icons/ai';
 
 const SidebarLink = ({ children, link, logout }) => {
   const router = useRouter();
@@ -14,9 +15,7 @@ const SidebarLink = ({ children, link, logout }) => {
   if (logout) {
     return (
       <li
-        className={`${
-          isActive ? 'text-4xl' : 'text-sm'
-        } hover:bg-secondary hover:text-primary font-medium min-w-full px-4 py-2 transition-all duration-200 hover:border-r-2 border-white `}
+        className={` hover:bg-secondary hover:text-primary font-medium min-w-full px-4 py-2 transition-all duration-200 hover:border-r-2 border-white cursor-pointer`}
         onClick={signOutHandler}
       >
         Logout
@@ -25,11 +24,13 @@ const SidebarLink = ({ children, link, logout }) => {
   } else {
     return (
       <li
-        className={`hover:bg-secondary hover:text-primary font-medium min-w-full px-4 py-2 transition-all duration-200  ${
+        className={`flex justify-center items-center hover:bg-secondary hover:text-primary font-medium min-w-full px-4 py-2 transition-all duration-200  ${
           isActive ? 'bg-secondary text-primary border-r-2 border-white' : ''
         } `}
       >
-        <Link href={link}>{children}</Link>
+        <Link href={link} className="ml-2">
+          {children}
+        </Link>
       </li>
     );
   }

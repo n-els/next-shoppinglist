@@ -13,7 +13,7 @@ const Navbar = () => {
     ],
     unAuthLinks: [{ name: 'Anmelden', href: '/auth' }],
     authLinks: [
-      { name: 'Meine Einkaufsliste', href: '/lists' },
+      { name: 'Meine Einkaufsliste', href: '/liste' },
       { name: 'Mein Profil', href: '/profil' },
     ],
   };

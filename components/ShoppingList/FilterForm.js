@@ -34,21 +34,27 @@ const FilterForm = ({ list, onCheck }) => {
   }, [checkedShops]);
 
   return (
-    <form className="">
-      <label htmlFor="shops">Nach Shop filtern: </label>
-      {shops.map((shop) => {
-        return (
-          <label
-            className="mr-2"
-            key={shop}
-            htmlFor={shop}
-            onChange={onCheckHandler}
-          >
-            <input type="checkbox" name={shop} id={shop} />
-            <span className="ml-1">{shop}</span>
-          </label>
-        );
-      })}
+    <form className={`flex flex-col ${list.length < 1 && `opacity-0`}`}>
+      <label htmlFor="shops" className="font-semibold text-lg text-primary">
+        Nach Laden filtern:{' '}
+      </label>
+      <div className="mt-1 flex flex-wrap">
+        {shops.map((shop) => {
+          return (
+            <div>
+              <label
+                className="mr-4 flex"
+                key={shop}
+                htmlFor={shop}
+                onChange={onCheckHandler}
+              >
+                <input type="checkbox" name={shop} id={shop} />
+                <span className="ml-2 font-light tracking-wide">{shop}</span>
+              </label>
+            </div>
+          );
+        })}
+      </div>
     </form>
   );
 };

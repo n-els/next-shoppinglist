@@ -35,7 +35,7 @@ const Hero = () => {
           geht's mit dem Schnäppchenjagen in den Supermärkten!
         </p>
 
-        <PrimaryButton link={'/lists'}>zur Einkaufsliste</PrimaryButton>
+        <PrimaryButton link={'/liste'}>zur Einkaufsliste</PrimaryButton>
       </div>
     </section>
   );

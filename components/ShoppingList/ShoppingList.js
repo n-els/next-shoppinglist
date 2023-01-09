@@ -3,7 +3,11 @@ import ShoppingItem from './ShoppingItem';
 
 const ShoppingList = ({ products, onCheck }) => {
   if (products.length < 1) {
-    return <p>no products</p>;
+    return (
+      <p className="text-xl text-center mt-24 font-medium">
+        Deine Einkaufsliste ist leer.
+      </p>
+    );
   }
 
   const listJSX = products.map((item) => {

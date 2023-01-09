@@ -22,7 +22,11 @@ const ShoppingList = ({ products, onCheck }) => {
         </p>
       )}
 
-      <ul>{listJSX}</ul>
+      <ul>
+        {products.map((item) => {
+          return <ShoppingItem key={item.id} item={item} onCheck={onCheck} />;
+        })}
+      </ul>
     </div>
   );
 };

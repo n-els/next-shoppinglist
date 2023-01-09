@@ -14,6 +14,10 @@ const AddItemForm = ({ onAddItem }) => {
     };
 
     onAddItem(newInputItem);
+
+    productName.current.value = '';
+    quantity.current.value = '';
+    shop.current.value = '';
   };
 
   return (
@@ -21,27 +25,27 @@ const AddItemForm = ({ onAddItem }) => {
       <input
         type="text"
         list="products"
-        placeholder="Welches Produkt?"
+        placeholder="Produkt eingeben oder auswählen"
         required
         ref={productName}
-        className="mb-2 p-1"
+        className="mb-2 py-1 px-2 rounded-md outline-none"
       />
       <input
         type="number"
         min="1"
         max="100"
-        placeholder="Wie viel?"
+        placeholder="Menge eingeben"
         required
         ref={quantity}
-        className="mb-2 p-1"
+        className="mb-2 py-1 px-2 rounded-md outline-none"
       />
       <input
         type="text"
         list="shops"
-        placeholder="welcher Laden"
+        placeholder="Laden eingeben"
         required
         ref={shop}
-        className="mb-2 p-1"
+        className="mb-2 py-1 px-2 rounded-md outline-none"
       />
       <datalist id="shops">
         <option value="Penny" />
@@ -70,7 +74,9 @@ const AddItemForm = ({ onAddItem }) => {
         <option value="Gurke" />
         <option value="Paprika" />
       </datalist>
-      <button className="bg-green-700 text-white p-1">hinzufügen</button>
+      <button className="bg-primary hover:bg-secondary text-white font-medium p-1 rounded-md tracking-wider transition-colors duration-400">
+        Produkt hinzufügen
+      </button>
     </form>
   );
 };

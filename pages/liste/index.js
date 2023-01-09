@@ -47,25 +47,27 @@ const List = ({ email, products, listId }) => {
   return (
     <div className="">
       <Head>
-        <title>Meine Liste</title>
+        <title>Meine Einkaufsliste</title>
       </Head>
 
       <div className="flex justify-between mt-4">
         <FilterForm list={productList} onCheck={onCheckShopFilterHandler} />
         <button
-          className="bg-primary font-bold text-white p-3 rounded-full"
+          className="bg-primary font-bold text-white p-3 rounded-full max-h-9"
           onClick={showFormToggle}
         >
           {isShowForm ? (
-            <span>
-              <BiMinus size="0.75rem" />
-            </span>
+            <BiMinus size="0.75rem" />
           ) : (
             <BsPlusLg size="0.75rem" />
           )}
         </button>
       </div>
-      {isShowForm && <AddItemForm onAddItem={addItemHandler} />}
+      {isShowForm && (
+        <section className="transition-opacity duration-1000 visible">
+          <AddItemForm onAddItem={addItemHandler} />
+        </section>
+      )}
       {filteredList.length < 1 ? (
         <ShoppingList products={productList} onCheck={deleteItemHandler} />
       ) : (

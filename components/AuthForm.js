@@ -36,7 +36,7 @@ const RegisterForm = () => {
       });
 
       if (!result.error) {
-        router.replace(`/lists`);
+        router.replace(`/liste`);
       } else {
         setErrorMessage(result.error);
       }

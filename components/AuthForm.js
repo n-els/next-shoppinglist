@@ -10,7 +10,7 @@ const RegisterForm = () => {
     confirmpassword: '',
   });
 
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
   const router = useRouter();
 

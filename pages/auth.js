@@ -13,10 +13,10 @@ const RegisterPage = () => {
           Authentifizierung
         </h1>
         <p className="text-sm md:text-center">
-          Um die Webanwendung von EinkaufsGenie zu nutzen, benötigst du ein
-          kostenloses Benutzerkonto!
-          <br /> Solltest du bereits ein Benutzerkonto besitzen, klicke bitte
-          auf den Link unter dem Benutzerkonto-Anlegen-Button.
+          Du musst eingeloggt sein, um die Webanwendung von EinkaufsGenie zu
+          nutzen.
+          <br /> Solltest du noch kein Benutzerkonto besitzen, klicke bitte auf
+          den Link unter dem Einloggen-Button.
         </p>
         <AuthForm />
       </section>

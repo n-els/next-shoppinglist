@@ -1,12 +1,34 @@
+import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import NavbarLink from './NavbarLink';
 
-const Topbar = () => {
+const Topbar = ({ links }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const session = useSession();
 
+  console.log(session.status);
+
+  console.log(links);
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
+
+  const isAuthJSX = links.authLinks.map((link) => {
+    return (
+      <NavbarLink key={link.name} to={link.href} clickHandler={toggleOpen}>
+        {link.name}
+      </NavbarLink>
+    );
+  });
+
+  const isNotAuthJSX = links.unAuthLinks.map((link) => {
+    return (
+      <NavbarLink key={link.name} to={link.href} clickHandler={toggleOpen}>
+        {link.name}
+      </NavbarLink>
+    );
+  });
+
   return (
     <nav className="flex items-center justify-between flex-wrap md:hidden bg-primary p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
@@ -38,22 +60,9 @@ const Topbar = () => {
           <NavbarLink to={'/'} clickHandler={toggleOpen}>
             Start
           </NavbarLink>
-          <NavbarLink to={'/lists'} clickHandler={toggleOpen}>
-            Meine Einkaufsliste
-          </NavbarLink>
-
-          <NavbarLink to={'/register'} clickHandler={toggleOpen}>
-            Registrieren
-          </NavbarLink>
-        </div>
-        <div>
-          <a
-            href="http://github.com/n-els"
-            target="_blank"
-            className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
-          >
-            Github
-          </a>
+          <NavbarLink to="mailto:nels@tuta.io">Kontakt</NavbarLink>
+          {session.status === 'authenticated' ? isAuthJSX : isNotAuthJSX}
+          <NavbarLink logout>Logout</NavbarLink>
         </div>
       </div>
     </nav>

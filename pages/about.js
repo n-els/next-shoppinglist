@@ -4,6 +4,15 @@ import Link from 'next/link';
 import LandingPageLayout from '../components/LandingPageLayout';
 import PlayIcon from '../components/Icons/PlayIcon';
 import GitHubIcon from '../components/Icons/GitHubIcon';
+import { AiFillHtml5 } from 'react-icons/ai';
+import { DiCss3, DiReact } from 'react-icons/di';
+import {
+  SiJavascript,
+  SiTailwindcss,
+  SiMongodb,
+  SiNextdotjs,
+  SiGithub,
+} from 'react-icons/si';
 
 export default function HomePage() {
   return (
@@ -11,47 +20,81 @@ export default function HomePage() {
       <Head>
         <title>next-shoppinglist</title>
       </Head>
-      <p>
-        There are thousands of good shopping list apps out there, but none that
-        was tailored to my own needs. Since I like to browse supermarket
-        brochures with my partner, I needed a way to create a list that offered
-        the possibility to specify products and the store where each product
-        should be purchased. The main functionality is to add products, check
-        off the purchased products and the filter functions to show only
-        products for selected stores.
-      </p>
+      <section className="px-6 tracking-wide max-w-4xl xl:mx-auto">
+        <article>
+          <h2 className="text-xl font-semibold mb-4 text-primary ">
+            Wieso diese App?
+          </h2>
+          <p className="mb-4">
+            Es gibt Tausende von guten Einkaufslisten-Apps, aber keine die auf
+            meine eigenen Bedürfnisse zugeschnitten war. <br />
+          </p>
+          <p>
+            Da ich gerne mit meiner Partnerin durch Supermarktprospekte
+            blättere, um eine Menge Geld beim Einkauf zu sparen, brauchte ich
+            eine besondere Einkaufsliste, eine Liste, die die die Möglichkeit
+            bietet, Produkte und vorallem den{' '}
+            <span className="font-medium">
+              jeweiligen Supermarkt/Laden anzugeben
+            </span>
+            , in der jenes rabattiert ist und gekauft werden soll.
+          </p>
 
-      <div className="my-8 flex">
-        <Link
-          href="/lists"
-          className="btn rounded-md px-2 py-2 bg-green-500 text-white font-bold hover:shadow-md
-            hover:bg-green-900 flex items-center"
-        >
-          <span className="mr-2">
-            <PlayIcon />
-          </span>
-          Get started
-        </Link>
-        <a
-          className="btn rounded-md px-2 py-2 bg-orange-500 text-white font-bold ml-2 hover:shadow-md
-          hover:bg-green-900 flex items-center"
-          href="http://github.com/n-els/next-shoppinglist"
-          target="_blank"
-        >
-          <span className="mr-2">
-            <GitHubIcon />
-          </span>
-          Source Code
-        </a>
-      </div>
-      <p>
-        This little web application was built for practice purposes using the
-        JavaScript framework next.JS which is built on top of React and
-        TailwindCSS. I have learned a lot about next.JS by programming this
-        small shopping list. For example how to use file-based routing,
-        server-side rendering, multiple layouts and build an internal API which
-        communicates with a MongoDB database.
-      </p>
+          <p className="mt-4">
+            Mir war sehr wichtig, dass EinkaufsGenie, komplett im Browser, ohne
+            extra Download, auf nahezu allen gängigen Geräten funktioniert.
+            Dieses Projekt ist zudem als Abschlussprojekt für ein Web
+            Development Bootcamp gedacht.
+          </p>
+        </article>
+        <article>
+          <h2 className="text-xl font-semibold mt-12 mb-4 text-primary tracking-wide">
+            Hauptfunktionalitäten
+          </h2>
+          <p>
+            Die Hauptfunktionalität ist das Hinzufügen von Produkten mit der
+            Menge und dem jeweiligen Laden, in welchem gekauft werden soll. Des
+            Weiteren kommt noch eine nützliche Filterfunktion dazu, die es dir
+            ermöglicht, nur Produkte bestimmter Läden aus deiner Liste
+            anzuzeigen, damit du vor allem eine Übersicht beim Einkauf behälst.
+          </p>
+        </article>
+        <article>
+          <h2 className="text-xl font-semibold mt-12 mb-4 text-primary tracking-wide">
+            Technologien
+          </h2>
+          <p>
+            Einkaufsguru wurde mit dem JavaScript Framework nextJS gebaut,
+            welches auf React basiert. Als CSS-Framework wurde TailwindCSS
+            verwendet. Die Daten werden in einer MongoDB Datenbank gespeichert.
+          </p>
+          <p className="mt-6 text-primary flex gap-2 sm:gap-5">
+            <AiFillHtml5 size="2rem" />
+            <DiCss3 size="2rem" />
+            <SiJavascript size="2rem" />
+            <SiTailwindcss size="2rem" />
+            <DiReact size="2rem" />
+            <SiNextdotjs size="2rem" />
+            <SiMongodb size="2rem" />
+            <SiGithub size="2rem" />
+          </p>
+        </article>
+        <article>
+          <h2 className="text-xl font-semibold mt-12 mb-4 text-primary tracking-wide">
+            Was habe ich gelernt?
+          </h2>
+          <p>
+            Diese kleine Webanwendung ist vor allem aus Übungszwecken
+            entstanden. Ich habe dabei den Einstieg in nextJS geschafft, ein
+            JavaScript Framework, welches auf React basiert. Mit diesem Projekt
+            konnte ich viele Konzepte und Technologien elernen, wie das
+            File-based-Routing, Server-Side-Rendering und das Erstellen einer
+            internen API, welche mit einer MongoDB Datenbank kommuniziert. Für
+            das CSS-Styling wurde TailwindCSS verwendet, es eignet sich
+            hervorragend um Komponenten zu verschönern.
+          </p>
+        </article>
+      </section>
     </>
   );
 }

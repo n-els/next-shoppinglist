@@ -14,18 +14,26 @@ const Footer = () => {
       <div className="flex gap-8 mt-4 text-sm justify-center text-center">
         <ul className="text-white">
           <li>
-            <a href="http://">Startseite</a>
+            <a href="/">Startseite</a>
           </li>
           <li>
-            <a href="http://">Über EinkaufsGenie</a>
+            <a href="/about">Über EinkaufsGenie</a>
+          </li>
+          <li>
+            <a href="/datenschutz">Datenschutz</a>
           </li>
         </ul>
         <ul className="text-white">
           <li>
-            <a href="http://">Anmelden</a>
+            <a href="/auth">Anmelden</a>
           </li>
           <li>
-            <a href="http://">Kontakt</a>
+            <a href="mailto:nels@tuta.io?subject=Kontaktanfrage Einkaufsgenie">
+              Kontakt
+            </a>
+          </li>
+          <li>
+            <a href="/impressum">Impressum</a>
           </li>
         </ul>
       </div>

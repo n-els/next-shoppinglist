@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 export const connectToDatabase = async () => {
+  mongoose.set('strictQuery', false);
   try {
     const db = await mongoose.connect(process.env.DB_CONNECTION_STRING, {
       useNewUrlParser: true,

@@ -22,10 +22,8 @@ const FilterForm = ({ list, onCheck }) => {
 
     if (isChecked) {
       setCheckedShops([...checkedShops, shopName]);
-      console.log(checkedShops);
     } else {
       setCheckedShops(checkedShops.filter((name) => name !== shopName));
-      console.log(checkedShops);
     }
   };
 
@@ -41,10 +39,9 @@ const FilterForm = ({ list, onCheck }) => {
       <div className="mt-1 flex flex-wrap">
         {shops.map((shop) => {
           return (
-            <div>
+            <div key={shop}>
               <label
                 className="mr-4 flex"
-                key={shop}
                 htmlFor={shop}
                 onChange={onCheckHandler}
               >

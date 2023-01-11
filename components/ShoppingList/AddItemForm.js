@@ -34,7 +34,7 @@ const AddItemForm = ({ onAddItem }) => {
         type="number"
         min="1"
         max="100"
-        placeholder="Menge eingeben"
+        placeholder="Stückzahl.."
         required
         ref={quantity}
         className="mb-2 py-1 px-2 rounded-md outline-none"
@@ -42,7 +42,7 @@ const AddItemForm = ({ onAddItem }) => {
       <input
         type="text"
         list="shops"
-        placeholder="Laden eingeben"
+        placeholder="Laden.."
         required
         ref={shop}
         className="mb-2 py-1 px-2 rounded-md outline-none"

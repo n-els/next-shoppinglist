@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { capitalizeFirstLetter } from '../../utils/stringHelpers';
 
 const AddItemForm = ({ onAddItem }) => {
   const quantity = useRef();
@@ -7,10 +8,11 @@ const AddItemForm = ({ onAddItem }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    const capitalizedShopName = capitalizeFirstLetter(shop.current.value);
     const newInputItem = {
       name: productName.current.value,
       quantity: quantity.current.value,
-      shop: shop.current.value,
+      shop: capitalizedShopName,
     };
 
     onAddItem(newInputItem);

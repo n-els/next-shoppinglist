@@ -45,7 +45,12 @@ const FilterForm = ({ list, onCheck }) => {
                 htmlFor={shop}
                 onChange={onCheckHandler}
               >
-                <input type="checkbox" name={shop} id={shop} />
+                <input
+                  type="checkbox"
+                  className="accent-secondary "
+                  name={shop}
+                  id={shop}
+                />
                 <span className="ml-2 font-light tracking-wide">{shop}</span>
               </label>
             </div>

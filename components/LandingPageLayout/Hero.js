@@ -5,9 +5,9 @@ import Image from 'next/image';
 const Hero = () => {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 items-center">
-      <div className="block md:hidden place-self-center">
+      <div className="block md:hidden place-self-center mb-10">
         <Image
-          src="/images/cutout-hero-1.png"
+          src="/images/hero-screens-cut.png"
           alt="Hero Image"
           width="300"
           height="400"
@@ -15,7 +15,7 @@ const Hero = () => {
       </div>
       <div className="hidden md:block xl:content-center xl:ml-auto">
         <Image
-          src="/images/cutout-hero-1.png"
+          src="/images/hero-screens-cut.png"
           alt="Hero Image"
           width="400"
           height="400"

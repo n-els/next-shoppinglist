@@ -32,9 +32,9 @@ const Topbar = ({ links }) => {
   return (
     <nav className="flex items-center justify-between flex-wrap md:hidden bg-primary p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <span className="font-semibold text-xl tracking-tight">
+        <a href="/liste" className="font-semibold text-xl tracking-tight">
           EinkaufsGenie
-        </span>
+        </a>
       </div>
       <div className="block lg:hidden">
         <button

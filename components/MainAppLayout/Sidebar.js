@@ -30,7 +30,9 @@ const Navbar = ({ links }) => {
 
   return (
     <nav className="hidden md:flex sm:flex-col min-h-screen bg-primary min-w-[17%] text-white text-center">
-      <h1 className=" font-bold text-xl mt-4 px-8">EinkaufsGenie</h1>
+      <a href="/liste" className=" font-bold text-xl mt-4 px-8">
+        EinkaufsGenie
+      </a>
       <p className="text-xs">Web App v1</p>
       {session.status === 'authenticated' && loginStatusMessage}
       <ul className="min-w-full mt-8">

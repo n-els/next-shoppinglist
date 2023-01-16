@@ -1,9 +1,13 @@
 import React from 'react';
 import LandingPageLayout from '../components/LandingPageLayout';
+import Head from 'next/head';
 
 const DatenschutzPage = () => {
   return (
     <section className="max-w-4xl xl:mx-auto px-6">
+      <Head>
+        <title>Datenschutzerklärung - EinkaufsGenie</title>
+      </Head>
       <h1 className="font-bold text-2xl text-primary mb-4">
         Datenschutzerklärung
       </h1>

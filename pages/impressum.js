@@ -1,9 +1,13 @@
+import Head from 'next/head';
 import React from 'react';
 import LandingPageLayout from '../components/LandingPageLayout';
 
 const DatenschutzPage = () => {
   return (
     <section className="max-w-4xl md:mx-auto px-6">
+      <Head>
+        <title>Impressum - EinkaufsGenie</title>
+      </Head>
       <h1 className="font-bold text-2xl text-primary mb-4">Impressum</h1>
 
       <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>

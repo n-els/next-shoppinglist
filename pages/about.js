@@ -18,7 +18,7 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>next-shoppinglist</title>
+        <title>Über EinkaufsGenie</title>
       </Head>
       <section className="px-6 tracking-wide max-w-4xl xl:mx-auto">
         <article>

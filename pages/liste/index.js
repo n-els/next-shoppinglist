@@ -47,7 +47,7 @@ const List = ({ email, products, listId }) => {
   return (
     <div className="">
       <Head>
-        <title>Meine Einkaufsliste</title>
+        <title>Einkaufsliste - EinkaufsGenie</title>
       </Head>
 
       <div className="flex justify-between mt-4">

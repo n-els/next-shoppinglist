@@ -10,16 +10,11 @@ const RegisterPage = () => {
 
   if (session.status === 'authenticated') {
     router.replace('/liste');
-    return (
-      <h2 className="text-3xl font-bold">
-        Du bist bereits eingeloggt, du wirst nun zur Liste weitergeleitet!
-      </h2>
-    );
   } else {
     return (
       <div className="mt-10">
         <Head>
-          <title>EinkaufsGenie - Authentifizieren</title>
+          <title>Authentifizieren - EinkaufsGenie</title>
         </Head>
         <section className="flex flex-col mx-auto max-w-5xl">
           <h1 className="text-3xl font-bold text-primary mb-4 md:text-center">

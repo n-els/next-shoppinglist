@@ -2,27 +2,40 @@ import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import { unstable_getServerSession } from 'next-auth/next';
 import { authOptions } from '../pages/api/auth/[...nextauth]';
+import Head from 'next/head';
 
 const UserProfilePage = () => {
   const session = useSession();
-  const [isMessageVisible, setIsMessageVisible] = useState(false);
 
   console.log(session);
 
   return (
-    <div>
-      <p>Du bist als {session.data.user.email} eingeloggt</p>
-      <button onClick={() => setIsMessageVisible(!isMessageVisible)}>
-        Toggle Message
-      </button>
-      <div
-        className={`${
-          isMessageVisible ? 'opacity-100' : 'opacity-0'
-        } duration-300 ease-in-out`}
-      >
-        Testnachricht
+    <section>
+      <Head>
+        <title>Mein Profil - EinkaufsGenie</title>
+      </Head>
+      <h2 className="text-xl font-bold mb-4 text-primary">Mein Profil</h2>
+      <p>Herzlich Willkommen, {session.data.user.email}</p>
+      <p className="mt-4">
+        Die Profilübersicht befindet sich derzeit noch im Aufbau. <br /> In
+        Zukunft wirst du hier dein Profil verwalten und Favoriten anlegen
+        können.
+      </p>
+      <div className="sm:flex flex-wrap">
+        <div className="bg-primary p-4 mt-4 mr-4 text-white opacity-25 min-w-[200px] rounded-md">
+          <h3>Passwort ändern</h3>
+        </div>
+        <div className="bg-primary p-4 mt-4 mr-4 text-white opacity-25 min-w-[200px] rounded-md">
+          <h3>Lieblingsprodukte verwalten</h3>
+        </div>
+        <div className="bg-primary p-4 mt-4 mr-4 text-white opacity-25 min-w-[200px] rounded-md">
+          <h3>Lieblingsläden verwalten</h3>
+        </div>
+        <div className="bg-primary p-4 mt-4 mr-4 text-white opacity-25 min-w-[200px] rounded-md">
+          <h3>Benutzerkonto löschen</h3>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
